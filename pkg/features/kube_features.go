@@ -203,7 +203,7 @@ const (
 	//
 	// Allow insecure kubeconfigs in MultiKueue setup.
 	// Requires careful consideration as it may lead to security issues.
-	// To be removed in Kueue v0.17.
+	// Deprecated: planned to be removed in 0.17
 	MultiKueueAllowInsecureKubeconfigs featuregate.Feature = "MultiKueueAllowInsecureKubeconfigs"
 )
 
@@ -321,7 +321,6 @@ var defaultVersionedFeatureGates = map[featuregate.Feature]featuregate.Versioned
 	},
 	MultiKueueAllowInsecureKubeconfigs: {
 		{Version: version.MustParse("0.15"), Default: false, PreRelease: featuregate.Alpha},
-		{Version: version.MustParse("0.17"), Default: false, PreRelease: featuregate.Deprecated}, // remove in 0.17
 	},
 }
 
