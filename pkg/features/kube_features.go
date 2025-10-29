@@ -198,6 +198,13 @@ const (
 	//
 	// Enable all updates to Workload objects to use Patch Merge instead of Patch Apply.
 	WorkloadRequestUseMergePatch featuregate.Feature = "WorkloadRequestUseMergePatch"
+
+	// owner: @mszadkow
+	//
+	// Allow insecure kubeconfigs in MultiKueue setup.
+	// Requires careful consideration as it may lead to security issues.
+	// To be removed in Kueue v0.17.
+	MultiKueueAllowInsecureKubeconfigs featuregate.Feature = "MultiKueueAllowInsecureKubeconfigs"
 )
 
 func init() {
@@ -311,6 +318,10 @@ var defaultVersionedFeatureGates = map[featuregate.Feature]featuregate.Versioned
 	},
 	WorkloadRequestUseMergePatch: {
 		{Version: version.MustParse("0.14"), Default: false, PreRelease: featuregate.Alpha},
+	},
+	MultiKueueAllowInsecureKubeconfigs: {
+		{Version: version.MustParse("0.15"), Default: false, PreRelease: featuregate.Alpha},
+		{Version: version.MustParse("0.17"), Default: false, PreRelease: featuregate.Deprecated}, // remove in 0.17
 	},
 }
 
